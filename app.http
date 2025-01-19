@@ -1,0 +1,11 @@
+### Health Check
+GET http://localhost:8000/hello
+
+### Search legal documents
+GET http://localhost:8000/legal-documents/search?q=contract&top=10
+
+### Get legal document by id
+GET http://localhost:8000/legal-documents/{{documentId}}
+
+### GENERATE FAKE DATA ##
+GET http://localhost:8000/generate-fake-legal-documents
