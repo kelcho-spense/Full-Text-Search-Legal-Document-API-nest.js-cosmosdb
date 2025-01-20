@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
-import { CreateLegalDocumentDto } from './dto/create-legal-document.dto';
+import { CreateLegalDocumentDto } from './dto';
 import { v4 as uuidv4 } from 'uuid';
 import { LegalDocument } from './entities/legal-document.entity';
 

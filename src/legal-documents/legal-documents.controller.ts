@@ -8,7 +8,7 @@ import {
   ParseArrayPipe,
 } from '@nestjs/common';
 import { LegalDocumentsService } from './legal-documents.service';
-import { CreateLegalDocumentDto } from './dto/create-legal-document.dto';
+import { CreateLegalDocumentDto } from './dto';
 
 @Controller('legal-documents')
 export class LegalDocumentsController {
