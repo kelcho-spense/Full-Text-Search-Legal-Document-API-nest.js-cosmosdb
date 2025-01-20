@@ -1,11 +1,34 @@
+@baseUrl = http://localhost:8000
+
 ### Health Check
-GET http://localhost:8000/hello
+GET {{baseUrl}}/hello
 
-### Search legal documents
-GET http://localhost:8000/legal-documents/search?q=contract&top=10
+### Full-text Search - Single Keyword
+GET {{baseUrl}}/legal-documents/fulltext?q=contract&top=10
 
-### Get legal document by id
-GET http://localhost:8000/legal-documents/{{documentId}}
+### Full-text Search - All Keywords
+GET {{baseUrl}}/legal-documents/fulltext/all?keywords=contract,agreement,2023&top=10
 
-### GENERATE FAKE DATA ##
-GET http://localhost:8000/generate-fake-legal-documents
+### Full-text Search - Any Keywords
+GET {{baseUrl}}/legal-documents/fulltext/any?keywords=contract,agreement&top=10
+
+### Full-text Search - Relevance Score
+GET {{baseUrl}}/legal-documents/fulltext/relevant?keywords=contract,agreement&top=10
+
+### Create Legal Document
+POST {{baseUrl}}/legal-documents
+Content-Type: application/json
+
+{
+    "title": "Sample Contract",
+    "content": "This is a sample contract agreement...",
+    "documentType": "contract",
+    "metadata": {
+        "author": "John Doe",
+        "version": "1.0",
+        "tags": ["contract", "agreement", "sample"]
+    }
+}
+
+### Generate Sample Data
+GET {{baseUrl}}/generate-fake-legal-documents

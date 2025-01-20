@@ -5,6 +5,7 @@ import {
   Body,
   Query,
   ParseIntPipe,
+  ParseArrayPipe,
 } from '@nestjs/common';
 import { LegalDocumentsService } from './legal-documents.service';
 import { CreateLegalDocumentDto } from './dto/create-legal-document.dto';
@@ -22,11 +23,37 @@ export class LegalDocumentsController {
   findAll() {
     return this.legalDocumentsService.findAll();
   }
-  @Get('search')
-  async search(
+  @Get('fulltext')
+  async searchFullText(
     @Query('q') searchText: string,
     @Query('top', ParseIntPipe) top: number = 10,
   ) {
-    return this.legalDocumentsService.searchByContent(searchText, top);
+    return this.legalDocumentsService.searchByFullText(searchText, top);
+  }
+
+  @Get('fulltext/all')
+  async searchAllKeywords(
+    @Query('keywords', new ParseArrayPipe({ items: String, separator: ',' }))
+    keywords: string[],
+    @Query('top', ParseIntPipe) top: number = 10,
+  ) {
+    return this.legalDocumentsService.searchByAllKeywords(keywords, top);
+  }
+  @Get('fulltext/any')
+  async searchAnyKeyword(
+    @Query('keywords', new ParseArrayPipe({ items: String, separator: ',' }))
+    keywords: string[],
+    @Query('top', ParseIntPipe) top: number = 10,
+  ) {
+    return this.legalDocumentsService.searchByAnyKeyword(keywords, top);
+  }
+
+  @Get('fulltext/relevant')
+  async searchWithRelevance(
+    @Query('keywords', new ParseArrayPipe({ items: String, separator: ',' }))
+    keywords: string[],
+    @Query('top', ParseIntPipe) top: number = 10,
+  ) {
+    return this.legalDocumentsService.searchWithRelevanceScore(keywords, top);
   }
 }
