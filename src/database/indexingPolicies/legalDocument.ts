@@ -1,4 +1,4 @@
-import { IndexingPolicy } from '@azure/cosmos';
+import { IndexingPolicy, FullTextPolicy } from '@azure/cosmos';
 
 export const legalDocumentIndexingPolicy: IndexingPolicy = {
   indexingMode: 'consistent',
@@ -18,25 +18,42 @@ export const legalDocumentIndexingPolicy: IndexingPolicy = {
       path: '/vector/*',
     },
   ],
-  // Define the composite indexes for full text policy
-  fullTextIndexes: [
+  compositeIndexes: [
+    [
+      {
+        path: '/dateCreated',
+        order: 'descending',
+      },
+      {
+        path: '/documentType',
+        order: 'ascending',
+      },
+    ],
+  ],
+};
+
+export const legalDocumentFullTextPolicy: FullTextPolicy = {
+  defaultLanguage: 'en-US',
+  fullTextPaths: [
     {
+      language: 'en-US',
       path: '/content',
     },
     {
       path: '/title',
+      language: 'en-US',
     },
     {
-      path: '/documentType',
+      path: '/metadata/tags/*',
+      language: 'en-US',
     },
     {
       path: '/metadata/author',
-    },
-    {
-      path: '/metadata/tags',
+      language: 'en-US',
     },
     {
       path: '/metadata/version',
+      language: 'en-US',
     },
   ],
 };

@@ -89,13 +89,14 @@ export class LegalDocumentsService {
     const querySpec = {
       query: `
         SELECT TOP @top *
-        FROM c 
+        FROM c
+        WHERE FullTextContainsAny(c.content, ${keywords.map((_, i) => `@kw${i}`).join(', ')})
         ORDER BY RANK FullTextScore(c.content, ${keywords.map((_, i) => `@kw${i}`).join(', ')})
       `,
       parameters: [
         ...keywords.map((kw, i) => ({ name: `@kw${i}`, value: kw })),
-        { name: '@top', value: top },
-      ],
+        { name: '@top', value: top }
+      ]
     };
     const { resources } = await container.items.query(querySpec).fetchAll();
     return resources;

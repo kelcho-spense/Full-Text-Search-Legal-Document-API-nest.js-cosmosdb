@@ -9,7 +9,7 @@ import {
   CosmosDbDiagnosticLevel,
 } from '@azure/cosmos';
 
-import { legalDocumentIndexingPolicy } from './indexingPolicies';
+import { legalDocumentFullTextPolicy, legalDocumentIndexingPolicy } from './indexingPolicies';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {
@@ -50,6 +50,7 @@ export class DatabaseService implements OnModuleInit {
           kind: PartitionKeyKind.Hash,
         },
         indexingPolicy: legalDocumentIndexingPolicy,
+        fullTextPolicy: legalDocumentFullTextPolicy,
       });
     this.container = legalDocumentsContainer;
   }

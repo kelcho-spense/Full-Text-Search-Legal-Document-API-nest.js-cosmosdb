@@ -1,5 +1,5 @@
 export class LegalDocument {
-  id: string;
+  id?: string;
   title: string;
   content: string;
   documentType: string;
