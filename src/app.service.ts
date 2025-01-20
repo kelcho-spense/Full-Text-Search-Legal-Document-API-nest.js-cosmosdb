@@ -12,9 +12,9 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async generateFakeLegalDocuments(legalDocumentsNumber: number = 20): Promise<string> {
-    
-
+  async generateFakeLegalDocuments(
+    legalDocumentsNumber: number = 20,
+  ): Promise<string> {
     return `Successfully generated and inserted ${3} legalDocuments`;
   }
 }

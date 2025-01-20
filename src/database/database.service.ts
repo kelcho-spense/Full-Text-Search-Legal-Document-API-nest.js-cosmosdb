@@ -9,8 +9,7 @@ import {
   CosmosDbDiagnosticLevel,
 } from '@azure/cosmos';
 
-import { productVectorEmbeddingPolicy } from './vectorEmbeddingPolicies';
-import { productIndexingPolicy } from './indexingPolicies';
+import { legalDocumentIndexingPolicy } from './indexingPolicies';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {
@@ -50,21 +49,7 @@ export class DatabaseService implements OnModuleInit {
           version: PartitionKeyDefinitionVersion.V2,
           kind: PartitionKeyKind.Hash,
         },
-        indexingPolicy: {
-          includedPaths: [
-            {
-              path: '/*',
-            },
-          ],
-          compositeIndexes: [
-            [
-              {
-                path: '/content',
-                order: 'ascending',
-              },
-            ],
-          ],
-        },
+        indexingPolicy: legalDocumentIndexingPolicy,
       });
     this.container = legalDocumentsContainer;
   }
