@@ -1,1 +1,2 @@
-export * from './legalDocument';
+export * from './IndexingPolicy';
+export * from './FullTextPolicy';
