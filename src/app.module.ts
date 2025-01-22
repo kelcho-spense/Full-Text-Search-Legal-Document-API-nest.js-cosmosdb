@@ -5,6 +5,7 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { LegalDocumentsModule } from './legal-documents/legal-documents.module';
+import { LegalDocumentsService } from './legal-documents/legal-documents.service';
 
 @Module({
   imports: [
@@ -17,6 +18,6 @@ import { LegalDocumentsModule } from './legal-documents/legal-documents.module';
     LegalDocumentsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, LegalDocumentsService],
 })
 export class AppModule {}

@@ -4,16 +4,16 @@
 GET {{baseUrl}}/hello
 
 ### Full-text Search - Single Keyword
-GET {{baseUrl}}/legal-documents/fulltext?q=contract&top=10
+GET {{baseUrl}}/legal-documents/fulltext?q=contract&top=3
 
 ### Full-text Search - All Keywords
-GET {{baseUrl}}/legal-documents/fulltext/all?keywords=contract,agreement,2023&top=10
+GET {{baseUrl}}/legal-documents/fulltext/all?keywords=contract,agreement,2023&top=3
 
 ### Full-text Search - Any Keywords
-GET {{baseUrl}}/legal-documents/fulltext/any?keywords=contract,agreement&top=10
+GET {{baseUrl}}/legal-documents/fulltext/any?keywords=contract,agreement&top=3
 
 ### Full-text Search - Relevance Score
-GET {{baseUrl}}/legal-documents/fulltext/relevant?keywords=contract,agreement&top=10
+GET {{baseUrl}}/legal-documents/fulltext/relevant?keywords=contract,agreement&top=3
 
 ### Create Legal Document
 POST {{baseUrl}}/legal-documents

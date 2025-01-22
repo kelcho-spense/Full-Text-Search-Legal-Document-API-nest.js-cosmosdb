@@ -86,18 +86,17 @@ export class LegalDocumentsService {
 
   async searchWithRelevanceScore(keywords: string[], top: number = 10) {
     const container = this.databaseService.getContainer();
+    const keywordsLiteral = keywords.map((k) => `'${k}'`).join(', ');
+
     const querySpec = {
       query: `
-        SELECT TOP @top *
+        SELECT TOP ${top} *
         FROM c
-        WHERE FullTextContainsAny(c.content, ${keywords.map((_, i) => `@kw${i}`).join(', ')})
-        ORDER BY RANK FullTextScore(c.content, ${keywords.map((_, i) => `@kw${i}`).join(', ')})
+        WHERE FullTextContainsAny(c.content, ${keywordsLiteral})
+        ORDER BY RANK FullTextScore(c.content, [${keywordsLiteral}])
       `,
-      parameters: [
-        ...keywords.map((kw, i) => ({ name: `@kw${i}`, value: kw })),
-        { name: '@top', value: top }
-      ]
     };
+
     const { resources } = await container.items.query(querySpec).fetchAll();
     return resources;
   }

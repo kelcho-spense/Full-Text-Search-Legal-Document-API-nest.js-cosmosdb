@@ -9,7 +9,10 @@ import {
   CosmosDbDiagnosticLevel,
 } from '@azure/cosmos';
 
-import { legalDocumentFullTextPolicy, legalDocumentIndexingPolicy } from './indexingPolicies';
+import {
+  legalDocumentFullTextPolicy,
+  legalDocumentIndexingPolicy,
+} from './indexingPolicies';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {

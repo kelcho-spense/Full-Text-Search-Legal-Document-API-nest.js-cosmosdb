@@ -11,7 +11,7 @@ export class AppController {
   }
 
   @Get('generate-fake-legal-documents')
-  generateFakeLegalDocuments(): Promise<string> {
+  generateFakeLegalDocuments(): Promise<any> {
     return this.appService.generateFakeLegalDocuments();
   }
 }
