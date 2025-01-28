@@ -8,11 +8,8 @@ import {
   PartitionKeyKind,
   CosmosDbDiagnosticLevel,
 } from '@azure/cosmos';
-
-import {
-  legalDocumentFullTextPolicy,
-  legalDocumentIndexingPolicy,
-} from './indexingPolicies';
+import { legalDocumentFullTextPolicy } from './fullTextPolicies';
+import { legalDocumentIndexingPolicy } from './indexingPolicies';
 
 @Injectable()
 export class DatabaseService implements OnModuleInit {
