@@ -51,9 +51,6 @@ AZURE_COSMOS_DB_ENDPOINT=https://<your-endpoint>.documents.azure.com:443/
 AZURE_COSMOS_DB_KEY=<your-key>
 AZURE_COSMOS_DB_NAME=<your-db-name>
 
-# AZURE OPENAI
-AZURE_OPENAI_API_KEY=<your-open-ai-key>
-AZURE_OPENAI_TEXT_EMBEDDING_MODEL_ENDPOINT=<your-embedding-model-endpoint>
 ```
 
 ## Running the Application
